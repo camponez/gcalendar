@@ -30,10 +30,11 @@ class GCalendar
     d.strftime('%Y%m%dT%H%M%S')
   end
 
-  def new_event(d, event_name, summary)
+  def new_event(d, event_name, summary, description)
     event = "BEGIN:VEVENT\n"
     event += "UID:#{format_date(d)}@#{event_name}\n"
-    event += "SUMMARY: #{summary}DESCRIPTION:-\n"
+    event += "SUMMARY: #{summary}\n"
+    event += "DESCRIPTION:#{description}\n"
     event += "DTSTAMP:#{format_date(d)}\nDTSTART:#{format_date(d)}\n"
     d += Rational(120, 1440)
     event += "DTEND:#{format_date(d)}\nEND:VEVENT\n"
