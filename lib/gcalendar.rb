@@ -17,9 +17,9 @@
 
 # Gcalendar
 class GCalendar
-  def initialize(_prodid, _timezone)
-    @proid = _prodid
-    @timezone = _timezone
+  def initialize(prodid, timezone)
+    @proid = prodid
+    @timezone = timezone
     @events = []
   end
 
@@ -27,13 +27,13 @@ class GCalendar
     d.strftime('%Y%m%dT%H%M%S')
   end
 
-  def new_event(_date, event_name, _summary, _description, _duration = 2)
+  def new_event(date, event_name, summary, description, duration = 2)
     @events.push(
       event_name: event_name,
-      date: _date,
-      summary: _summary,
-      description: _description,
-      duration: _duration
+      date: date,
+      summary: summary,
+      description: description,
+      duration: duration
     )
   end
 
@@ -46,15 +46,15 @@ class GCalendar
   end
 
   def merge_events
-    @events.each do |_event|
-      _d = format_date(_event[:date])
+    @events.each do |event|
+      d = format_date(event[:date])
       @ics += "BEGIN:VEVENT\n"
-      @ics += "UID:#{_d}@#{_event[:event_name]}\n"
-      @ics += "SUMMARY: #{_event[:summary]}\n"
-      @ics += "DESCRIPTION:#{_event[:description]}\n"
-      @ics += "DTSTAMP:#{_d}\nDTSTART:#{_d}\n"
-      _d = format_date(_event[:date] + Rational(60 * _event[:duration], 1440))
-      @ics += "DTEND:#{_d}\nEND:VEVENT\n"
+      @ics += "UID:#{d}@#{event[:event_name]}\n"
+      @ics += "SUMMARY: #{event[:summary]}\n"
+      @ics += "DESCRIPTION:#{event[:description]}\n"
+      @ics += "DTSTAMP:#{d}\nDTSTART:#{d}\n"
+      d = format_date(event[:date] + Rational(60 * event[:duration], 1440))
+      @ics += "DTEND:#{d}\nEND:VEVENT\n"
     end
   end
 
