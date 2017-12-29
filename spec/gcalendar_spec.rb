@@ -1,6 +1,6 @@
 # spec/gcalendar_spec.rb
+require 'spec_helper'
 require 'date'
-require 'gcalendar'
 
 describe GCalendar do
   describe '#new_event' do
