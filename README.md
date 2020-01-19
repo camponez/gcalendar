@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/camponez/gcalendar.svg?branch=master)](https://travis-ci.org/camponez/gcalendar)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/734e4d9ccd774ac5be08/test_coverage)]
-[![](https://github.com/camponez/gcalendar/workflows/Ruby/badge.svg)]
+![Test Coverage](https://api.codeclimate.com/v1/badges/734e4d9ccd774ac5be08/test_coverage)
+![](https://github.com/camponez/gcalendar/workflows/Ruby/badge.svg)
 
 This will help to generate a ics file to be imported into Google Calendar.
 
